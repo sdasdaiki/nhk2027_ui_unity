@@ -362,6 +362,7 @@
 "Assets/Script/MapPinController.cs"
 "Assets/Script/MapTouchController.cs"
 "Assets/Script/ScreenSwitcher.cs"
+"Assets/Script/TeamSwitchController.cs"
 -langversion:9.0
 /deterministic
 /optimize+
