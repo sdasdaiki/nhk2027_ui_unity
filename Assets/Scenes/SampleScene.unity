@@ -361,7 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!4 &73271858
 Transform:
   m_ObjectHideFlags: 0
@@ -1625,6 +1628,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &634327169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634327170}
+  m_Layer: 0
+  m_Name: CameraRig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &634327170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634327169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639375837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8168434301152935762, guid: 0b2b82f4aec50a74aabc46b3c3d81cf3, type: 3}
@@ -1681,7 +1715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!4 &650721269
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,7 +1996,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!4 &719729337
 Transform:
   m_ObjectHideFlags: 0
@@ -2118,7 +2158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!4 &846832707
 Transform:
   m_ObjectHideFlags: 0
@@ -2743,7 +2786,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!1 &976056623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,12 +2842,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd36259c5fcbe99419d60799376dcf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCamera: {fileID: 1174546359}
+  mapCamera: {fileID: 634327170}
   redTeamView: {fileID: 1805933791}
   blueTeamView: {fileID: 1833277399}
   switchButton: {fileID: 976056626}
   buttonBackground: {fileID: 0}
   buttonText: {fileID: 2099428126}
+  isRedTeam: 1
 --- !u!114 &976056626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3891,7 +3938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!1 &1366447718
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,7 +4195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!1 &1409923872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5265,7 +5318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedNodes: []
+  mapCamera: {fileID: 0}
+  redTarget: {fileID: 0}
+  blueTarget: {fileID: 0}
+  teamController: {fileID: 0}
 --- !u!1001 &2040588824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5782,3 +5838,4 @@ SceneRoots:
   - {fileID: 430746897}
   - {fileID: 1805933791}
   - {fileID: 1833277399}
+  - {fileID: 634327170}
