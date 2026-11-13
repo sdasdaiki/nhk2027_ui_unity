@@ -1,27 +1,36 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MapModeController : MonoBehaviour
 {
     public Camera mapCamera;
 
-    [Header("カメラが移動するポイントのリスト")]
-    public Transform[] targetPoints;
+    [Header("赤チームのカメラ移動先")]
+    [FormerlySerializedAs("targetPoints")]
+    public Transform[] redTargetPoints;
+
+    [Header("青チームのカメラ移動先")]
+    public Transform[] blueTargetPoints;
 
     [Header("カメラの移動速度")]
     public float moveSpeed = 10f;
 
     private Vector3 currentTargetPosition;
     private bool isMoving = false;
+    private bool isRedTeam = true;
+    private int selectedPointIndex;
 
     private void OnEnable()
     {
         if (mapCamera != null) mapCamera.gameObject.SetActive(true);
-        
-        // パネルを開いた時は、0番目のポイントへ瞬時に移動しておく
-        if (targetPoints.Length > 0 && mapCamera != null)
+
+        Transform[] points = GetCurrentTargetPoints();
+        if (mapCamera != null && points != null && points.Length > 0 && points[0] != null)
         {
-            SetTargetPosition(targetPoints[0].position);
+            selectedPointIndex = 0;
+            SetTargetPosition(points[0].position);
             mapCamera.transform.position = currentTargetPosition;
+            isMoving = false;
         }
     }
 
@@ -47,13 +56,35 @@ public class MapModeController : MonoBehaviour
         }
     }
 
+    public void SetTeam(bool red)
+    {
+        isRedTeam = red;
+        MoveToPoint(selectedPointIndex);
+    }
+
     // UIボタンから直接呼ばれるメソッド（ボタンごとに番号を渡す）
     public void MoveToPoint(int pointIndex)
     {
-        if (pointIndex >= 0 && pointIndex < targetPoints.Length)
+        Transform[] points = GetCurrentTargetPoints();
+        if (mapCamera == null)
         {
-            SetTargetPosition(targetPoints[pointIndex].position);
+            Debug.LogError("MapModeController: Map Camera is not assigned.", this);
+            return;
         }
+
+        if (points == null || pointIndex < 0 || pointIndex >= points.Length || points[pointIndex] == null)
+        {
+            Debug.LogError($"MapModeController: No {(isRedTeam ? "red" : "blue")} team target is assigned at index {pointIndex}.", this);
+            return;
+        }
+
+        selectedPointIndex = pointIndex;
+        SetTargetPosition(points[pointIndex].position);
+    }
+
+    private Transform[] GetCurrentTargetPoints()
+    {
+        return isRedTeam ? redTargetPoints : blueTargetPoints;
     }
 
     private void SetTargetPosition(Vector3 targetPos)

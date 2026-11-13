@@ -4,10 +4,8 @@ using TMPro;
 
 public class TeamSwitchController : MonoBehaviour
 {
-    [Header("カメラと視点の移動先")]
-    public Transform mapCamera;     // 動かす対象（MapPinCamera）
-    public Transform redTeamView;   // 赤チームの視点（Empty）
-    public Transform blueTeamView;  // 青チームの視点（Empty）
+    [Header("マップ移動")]
+    public MapModeController mapModeController;
 
     [Header("UI設定")]
     public Button switchButton;
@@ -22,26 +20,37 @@ public class TeamSwitchController : MonoBehaviour
         {
             switchButton.onClick.AddListener(ToggleTeam);
         }
-        UpdateCameraView();
+
+        if (mapModeController == null)
+        {
+            Debug.LogError("TeamSwitchController: Map Mode Controller is not assigned.", this);
+        }
+        else
+        {
+            mapModeController.SetTeam(isRedTeam);
+        }
+
+        UpdateButtonVisual();
     }
 
     void ToggleTeam()
     {
         isRedTeam = !isRedTeam;
-        UpdateCameraView();
+
+        if (mapModeController == null)
+        {
+            Debug.LogError("TeamSwitchController: Map Mode Controller is not assigned.", this);
+        }
+        else
+        {
+            mapModeController.SetTeam(isRedTeam);
+        }
+
+        UpdateButtonVisual();
     }
 
-void UpdateCameraView()
+    private void UpdateButtonVisual()
     {
-        Transform targetView = isRedTeam ? redTeamView : blueTeamView;
-        
-        // 位置はそのまま代入
-        mapCamera.position = targetView.position;
-        
-        // 【修正点】rotation（Quaternion）ではなく、eulerAngles（XYZの角度）を代入する
-        mapCamera.eulerAngles = targetView.eulerAngles;
-
-        // ボタンの見た目を変える
         if (buttonText != null)
         {
             buttonText.text = isRedTeam ? "Team: RED" : "Team: BLUE";

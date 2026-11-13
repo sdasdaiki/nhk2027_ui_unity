@@ -362,9 +362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
+  redTarget: {fileID: 73271858}
+  blueTarget: {fileID: 1338224525}
+  teamController: {fileID: 976056625}
 --- !u!4 &73271858
 Transform:
   m_ObjectHideFlags: 0
@@ -1715,10 +1715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
+  mapCamera: {fileID: 1174546359}
+  redTarget: {fileID: 650721269}
+  blueTarget: {fileID: 2029250636}
+  teamController: {fileID: 976056625}
 --- !u!4 &650721269
 Transform:
   m_ObjectHideFlags: 0
@@ -1925,11 +1925,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapCamera: {fileID: 1174546358}
-  targetPoints:
+  redTargetPoints:
   - {fileID: 846832707}
   - {fileID: 650721269}
   - {fileID: 719729337}
   - {fileID: 73271858}
+  blueTargetPoints:
+  - {fileID: 2029250636}
+  - {fileID: 969489317}
+  - {fileID: 1399591042}
+  - {fileID: 1338224525}
   moveSpeed: 10
 --- !u!114 &715115891
 MonoBehaviour:
@@ -1996,10 +2001,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
+  mapCamera: {fileID: 976056624}
+  redTarget: {fileID: 719729337}
+  blueTarget: {fileID: 1399591042}
+  teamController: {fileID: 976056625}
 --- !u!4 &719729337
 Transform:
   m_ObjectHideFlags: 0
@@ -2158,10 +2163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
+  mapCamera: {fileID: 1174546359}
+  redTarget: {fileID: 846832707}
+  blueTarget: {fileID: 969489317}
+  teamController: {fileID: 976056625}
 --- !u!4 &846832707
 Transform:
   m_ObjectHideFlags: 0
@@ -2753,7 +2758,7 @@ GameObject:
   - component: {fileID: 969489317}
   - component: {fileID: 969489318}
   m_Layer: 0
-  m_Name: startArea
+  m_Name: skyArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2842,9 +2847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd36259c5fcbe99419d60799376dcf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCamera: {fileID: 634327170}
-  redTeamView: {fileID: 1805933791}
-  blueTeamView: {fileID: 1833277399}
+  mapModeController: {fileID: 715115890}
   switchButton: {fileID: 976056626}
   buttonBackground: {fileID: 0}
   buttonText: {fileID: 2099428126}
@@ -5285,7 +5288,7 @@ GameObject:
   - component: {fileID: 2029250636}
   - component: {fileID: 2029250637}
   m_Layer: 0
-  m_Name: skyArea
+  m_Name: startArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
