@@ -14,7 +14,7 @@ public class TeamSwitchController : MonoBehaviour
     public Image buttonBackground;
     public TMP_Text buttonText;
 
-    private bool isRedTeam = true;
+    public bool isRedTeam = true;
 
     void Start()
     {
