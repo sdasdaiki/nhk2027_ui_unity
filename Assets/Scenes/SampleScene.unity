@@ -341,7 +341,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 73271858}
-  - component: {fileID: 73271857}
   m_Layer: 0
   m_Name: musticaAreaRed
   m_TagString: Untagged
@@ -349,22 +348,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &73271857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73271856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 73271858}
-  blueTarget: {fileID: 1338224525}
-  teamController: {fileID: 976056625}
 --- !u!4 &73271858
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,7 +1678,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650721269}
-  - component: {fileID: 650721268}
   m_Layer: 0
   m_Name: skyArea
   m_TagString: Untagged
@@ -1703,22 +1685,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &650721268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650721267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 1174546359}
-  redTarget: {fileID: 650721269}
-  blueTarget: {fileID: 2029250636}
-  teamController: {fileID: 976056625}
 --- !u!4 &650721269
 Transform:
   m_ObjectHideFlags: 0
@@ -1981,7 +1947,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719729337}
-  - component: {fileID: 719729336}
   m_Layer: 0
   m_Name: strageArea
   m_TagString: Untagged
@@ -1989,22 +1954,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &719729336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719729335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 976056624}
-  redTarget: {fileID: 719729337}
-  blueTarget: {fileID: 1399591042}
-  teamController: {fileID: 976056625}
 --- !u!4 &719729337
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,7 +2092,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 846832707}
-  - component: {fileID: 846832706}
   m_Layer: 0
   m_Name: startArea
   m_TagString: Untagged
@@ -2151,22 +2099,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &846832706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846832705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 1174546359}
-  redTarget: {fileID: 846832707}
-  blueTarget: {fileID: 969489317}
-  teamController: {fileID: 976056625}
 --- !u!4 &846832707
 Transform:
   m_ObjectHideFlags: 0
@@ -2756,7 +2688,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969489317}
-  - component: {fileID: 969489318}
   m_Layer: 0
   m_Name: skyArea
   m_TagString: Untagged
@@ -2779,22 +2710,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833277399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &969489318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969489316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
 --- !u!1 &976056623
 GameObject:
   m_ObjectHideFlags: 0
@@ -3906,7 +3821,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1338224525}
-  - component: {fileID: 1338224526}
   m_Layer: 0
   m_Name: musticaAreaRed
   m_TagString: Untagged
@@ -3929,22 +3843,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833277399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1338224526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338224524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
 --- !u!1 &1366447718
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,7 +4061,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1399591042}
-  - component: {fileID: 1399591043}
   m_Layer: 0
   m_Name: strageArea
   m_TagString: Untagged
@@ -4186,22 +4083,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833277399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1399591043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399591041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
 --- !u!1 &1409923872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5286,7 +5167,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2029250636}
-  - component: {fileID: 2029250637}
   m_Layer: 0
   m_Name: startArea
   m_TagString: Untagged
@@ -5309,22 +5189,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833277399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2029250637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029250635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90139500161b4484fa2f98161ccc65d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapCamera: {fileID: 0}
-  redTarget: {fileID: 0}
-  blueTarget: {fileID: 0}
-  teamController: {fileID: 0}
 --- !u!1001 &2040588824
 PrefabInstance:
   m_ObjectHideFlags: 0
