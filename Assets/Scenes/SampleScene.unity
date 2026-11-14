@@ -1815,7 +1815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &715115886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1898,8 +1898,8 @@ MonoBehaviour:
   - {fileID: 719729337}
   - {fileID: 73271858}
   blueTargetPoints:
-  - {fileID: 2029250636}
   - {fileID: 969489317}
+  - {fileID: 2029250636}
   - {fileID: 1399591042}
   - {fileID: 1338224525}
   moveSpeed: 10
@@ -2690,7 +2690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969489317}
   m_Layer: 0
-  m_Name: skyArea
+  m_Name: startArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2894,7 +2894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1001144669
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3066,7 +3066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1101706409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5169,7 +5169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029250636}
   m_Layer: 0
-  m_Name: startArea
+  m_Name: skyArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
