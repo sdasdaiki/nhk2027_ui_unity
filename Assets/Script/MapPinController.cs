@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems; // UIの誤タップ防止用
+using System.Collections.Generic;
 
 public class MapPinController : MonoBehaviour
 {
@@ -61,14 +62,12 @@ void Update()
 
     bool isTapped = false;
     Vector3 inputPos = Vector3.zero;
-    int fingerId = -1; // -1はマウスを表す
 
     // 入力の検知
     if (Input.GetMouseButtonDown(0))
     {
         isTapped = true;
         inputPos = Input.mousePosition;
-        fingerId = -1; 
     }
     else if (Input.touchCount == 1)
     {
@@ -77,29 +76,30 @@ void Update()
         {
             isTapped = true;
             inputPos = touch.position;
-            fingerId = touch.fingerId;
         }
     }
 
     // タップされていないフレームはここで終了
     if (!isTapped) return; 
 
-    // 【安全装置】UIの上をタップしたかどうかの判定
-    if (fingerId == -1)
+    // 入力位置を使ってUI上のクリックか判定
+    EventSystem eventSystem = EventSystem.current;
+    if (eventSystem == null)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("【ブロック】透明なパネルなどのUIをクリックしたためキャンセルしました。");
-            return;
-        }
+        Debug.LogError("MapPinController: EventSystem is not available.", this);
+        return;
     }
-    else
+
+    PointerEventData pointerData = new PointerEventData(eventSystem)
     {
-        if (EventSystem.current.IsPointerOverGameObject(fingerId))
-        {
-            Debug.Log("【ブロック】透明なパネルなどのUIをタッチしたためキャンセルしました。");
-            return;
-        }
+        position = inputPos
+    };
+    List<RaycastResult> raycastResults = new List<RaycastResult>();
+    eventSystem.RaycastAll(pointerData, raycastResults);
+    if (raycastResults.Count > 0)
+    {
+        Debug.Log("【ブロック】透明なパネルなどのUIをクリックしたためキャンセルしました。");
+        return;
     }
 
     Debug.Log("【通過】UIブロックを抜けました！Rayを飛ばします。");
