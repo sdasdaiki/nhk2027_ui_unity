@@ -54,10 +54,11 @@ public class TeamSwitchController : MonoBehaviour
         if (buttonText != null)
         {
             buttonText.text = isRedTeam ? "Team: RED" : "Team: BLUE";
-            if (buttonBackground != null)
-            {
-                buttonBackground.color = isRedTeam ? new Color(1f, 0.5f, 0.5f) : new Color(0.5f, 0.5f, 1f);
-            }
+        }
+
+        if (buttonBackground != null)
+        {
+            buttonBackground.color = isRedTeam ? new Color(1f, 0.5f, 0.5f) : new Color(0.5f, 0.5f, 1f);
         }
     }
 }

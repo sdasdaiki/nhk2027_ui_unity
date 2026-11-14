@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1280
     height: 709.3334
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -415,9 +415,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 365e0000
-      m_LastClickedID: 24118
-      m_ExpandedIDs: 2afbffff0c5e0000
+      m_SelectedIDs: ec5e0000
+      m_LastClickedID: 24300
+      m_ExpandedIDs: 2afbffff5a5d0000045e00001c5e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.28651616, y: 0.43663707, z: -0.1489709, w: 0.8397296}
     speed: 2
-    m_Value: {x: 0.2865162, y: 0.4366371, z: -0.1489709, w: 0.83972967}
+    m_Value: {x: 0.28650448, y: 0.43661928, z: -0.14896482, w: 0.8396954}
   m_Size:
     m_Target: 13.971317
     speed: 2
@@ -895,7 +895,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script
+    - Assets/image
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -903,16 +903,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Script
+  - Assets/image
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\sdaik\NHK2027_ui_linux
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e4600000
-    m_LastClickedID: 24804
-    m_ExpandedIDs: 00000000d460000000ca9a3bffffff7f
+    m_SelectedIDs: cc600000
+    m_LastClickedID: 24780
+    m_ExpandedIDs: 00000000c260000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -940,7 +940,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d4600000
+    m_ExpandedIDs: 00000000c2600000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -992,7 +992,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 166}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -1071,7 +1071,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 335.64984
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
