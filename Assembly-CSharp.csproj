@@ -67,7 +67,6 @@
     <Compile Include="Assets\Script\MapPinController.cs" />
     <Compile Include="Assets\Script\TeamSwitchController.cs" />
     <Compile Include="Assets\Script\MapModeController.cs" />
-    <Compile Include="Assets\Script\MapNode.cs" />
     <Compile Include="Assets\Script\MapTouchController.cs" />
     <Compile Include="Assets\Script\ArrowDirection.cs" />
     <Compile Include="Assets\Script\ScreenSwitcher.cs" />
