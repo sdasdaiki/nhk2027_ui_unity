@@ -360,6 +360,7 @@
 "Assets/Script/MapModeController.cs"
 "Assets/Script/MapPinController.cs"
 "Assets/Script/MapTouchController.cs"
+"Assets/Script/Quit.cs"
 "Assets/Script/ScreenSwitcher.cs"
 "Assets/Script/TeamSwitchController.cs"
 -langversion:9.0
