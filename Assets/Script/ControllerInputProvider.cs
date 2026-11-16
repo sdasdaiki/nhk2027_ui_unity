@@ -92,6 +92,18 @@ public class ControllerInputProvider : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI debugText2;
     [SerializeField] TMPro.TextMeshProUGUI debugText3;
 
+    [Header("デバッグログ設定")]
+    [SerializeField] bool logLStickInput = true;
+    [SerializeField] bool logRStickInput = true;
+    [SerializeField] bool logDpadInput = true;
+    [SerializeField] bool logLTriggerInput = true;
+    [SerializeField] bool logRTriggerInput = true;
+    [SerializeField] bool logLStickInputUnprocessed;
+    [SerializeField] bool logRStickInputUnprocessed;
+    [SerializeField] bool logLTriggerInputUnprocessed;
+    [SerializeField] bool logRTriggerInputUnprocessed;
+    [SerializeField] bool logButtonStates;
+
     float inputLogTimer;
 
     void Awake()
@@ -114,14 +126,33 @@ public class ControllerInputProvider : MonoBehaviour
         DpadInput();
         ButtonInput();
         DebugInput();
-// 値出力
+        // 値出力
         inputLogTimer += Time.deltaTime;
         if (inputLogTimer >= 1f)
         {
             inputLogTimer = 0f;
-            Debug.Log($"LStick: {m_LStickInput}, RStick: {m_RStickInput}, " +
-                      $"DPad: {m_DpadInput}, LTrigger: {m_LTriggerInput:F2}, " +
-                      $"RTrigger: {m_RTriggerInput:F2}");
+            var logValues = new List<string>();
+            if (logLStickInput) logValues.Add($"LStick: {LStickInput}");
+            if (logRStickInput) logValues.Add($"RStick: {RStickInput}");
+            if (logDpadInput) logValues.Add($"DPad: {DpadVecInput}");
+            if (logLTriggerInput) logValues.Add($"LTrigger: {LTriggerInput:F2}");
+            if (logRTriggerInput) logValues.Add($"RTrigger: {RTriggerInput:F2}");
+            if (logLStickInputUnprocessed) logValues.Add($"LStick (raw): {LStickInputUnprocessed}");
+            if (logRStickInputUnprocessed) logValues.Add($"RStick (raw): {RStickInputUnprocessed}");
+            if (logLTriggerInputUnprocessed) logValues.Add($"LTrigger (raw): {LTriggerInputUnprocessed:F2}");
+            if (logRTriggerInputUnprocessed) logValues.Add($"RTrigger (raw): {RTriggerInputUnprocessed:F2}");
+            if (logButtonStates)
+            {
+                logValues.Add($"LStickPressed: {LStickPressed}, RStickPressed: {RStickPressed}, " +
+                              $"A: {A_Pressed}, B: {B_Pressed}, X: {X_Pressed}, Y: {Y_Pressed}, " +
+                              $"LBumper: {LBumper_Pressed}, RBumper: {RBumper_Pressed}, " +
+                              $"View: {View_Pressed}, Menu: {Menu_Pressed}");
+            }
+
+            if (logValues.Count > 0)
+            {
+                Debug.Log(string.Join(", ", logValues));
+            }
         }
     }
     void StickInput()
