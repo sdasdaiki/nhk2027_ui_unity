@@ -30,8 +30,10 @@ public class InputVisalizer : MonoBehaviour
     [Header("スティック表示領域と点")]
     [SerializeField] RectTransform lStickCircle;
     [SerializeField] RectTransform lStickDot;
+    [SerializeField] RectTransform lStickProcessedDot;
     [SerializeField] RectTransform rStickCircle;
     [SerializeField] RectTransform rStickDot;
+    [SerializeField] RectTransform rStickProcessedDot;
 
     [Header("色と入力判定")]
     [SerializeField] Color pressedColor = Color.green;
@@ -79,10 +81,12 @@ public class InputVisalizer : MonoBehaviour
         SetPressed(dpadRightImage, dpadInput.x > 0.5f);
 
         UpdateStickDot(lStickCircle, lStickDot, controllerInputProvider.LStickInputUnprocessed);
+        UpdateStickDot(lStickCircle, lStickProcessedDot, controllerInputProvider.LStickInput);
         UpdateStickDot(rStickCircle, rStickDot, controllerInputProvider.RStickInputUnprocessed);
+        UpdateStickDot(rStickCircle, rStickProcessedDot, controllerInputProvider.RStickInput);
     }
 
-    void UpdateStickDot(RectTransform circle, RectTransform dot, Vector2 rawInput)
+    void UpdateStickDot(RectTransform circle, RectTransform dot, Vector2 stickInput)
     {
         if (circle == null || dot == null)
         {
@@ -97,7 +101,7 @@ public class InputVisalizer : MonoBehaviour
         float dotRadius = Mathf.Sqrt(dotHalfWidth * dotHalfWidth + dotHalfHeight * dotHalfHeight);
         float radius = Mathf.Max(0f, Mathf.Min(circleRect.width, circleRect.height) * 0.5f - dotRadius);
 
-        Vector2 clampedInput = Vector2.ClampMagnitude(rawInput, 1f);
+        Vector2 clampedInput = Vector2.ClampMagnitude(stickInput, 1f);
         Vector2 localPosition = circleRect.center + clampedInput * radius;
         dot.position = circle.TransformPoint(localPosition);
     }

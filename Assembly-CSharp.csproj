@@ -69,6 +69,7 @@
     <Compile Include="Assets\Script\TeamSwitchController.cs" />
     <Compile Include="Assets\Script\MapModeController.cs" />
     <Compile Include="Assets\Script\Quit.cs" />
+    <Compile Include="Assets\Script\SliderValueDisplay.cs" />
     <Compile Include="Assets\Script\InputVisalizer.cs" />
     <Compile Include="Assets\Script\MapTouchController.cs" />
     <Compile Include="Assets\Script\ArrowDirection.cs" />
