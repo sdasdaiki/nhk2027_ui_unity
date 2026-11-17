@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &146317224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2228,7 +2228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &715115886
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3781,7 +3781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbcde449da78df4b8e88b8638af6a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerInputProvider: {fileID: 0}
+  controllerInputProvider: {fileID: 1658487675}
   aButtonImage: {fileID: 1138617579}
   bButtonImage: {fileID: 43142095}
   xButtonImage: {fileID: 1771452697}
@@ -3917,7 +3917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1101706409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,7 +5236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1468140162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7125,10 +7125,10 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 2040588824}
   - {fileID: 1085747048}
+  - {fileID: 1658487676}
   - {fileID: 927863095}
   - {fileID: 1174546359}
   - {fileID: 430746897}
   - {fileID: 1805933791}
   - {fileID: 1833277399}
   - {fileID: 634327170}
-  - {fileID: 1658487676}

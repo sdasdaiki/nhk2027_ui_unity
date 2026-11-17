@@ -38,9 +38,8 @@ public class InputVisalizer : MonoBehaviour
     [SerializeField, Range(0f, 1f)] float triggerPressedThreshold = 0.1f;
 
     readonly Dictionary<Image, Color> originalColors = new Dictionary<Image, Color>();
-    bool missingProviderLogged;
 
-    void Update()
+    void Start()
     {
         if (controllerInputProvider == null)
         {
@@ -49,11 +48,14 @@ public class InputVisalizer : MonoBehaviour
 
         if (controllerInputProvider == null)
         {
-            if (!missingProviderLogged)
-            {
-                Debug.LogError("InputVisalizer: ControllerInputProvider is not assigned or available.", this);
-                missingProviderLogged = true;
-            }
+            Debug.LogError("InputVisalizer: ControllerInputProvider is not assigned or available.", this);
+        }
+    }
+
+    void Update()
+    {
+        if (controllerInputProvider == null)
+        {
             return;
         }
 
