@@ -99,7 +99,7 @@ public class InputVisalizer : MonoBehaviour
         if (text != null)
         {
             text.text = $"X: {stickInput.x:F2}, Y: {stickInput.y:F2}, " +
-                        $"AbsX: {Mathf.Abs(stickInput.x):F2}, AbsY: {Mathf.Abs(stickInput.y):F2}";
+                        $"Magnitude: {stickInput.magnitude:F2}";
         }
     }
 
