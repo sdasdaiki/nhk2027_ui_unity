@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InputVisalizer : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class InputVisalizer : MonoBehaviour
     [SerializeField] RectTransform rStickCircle;
     [SerializeField] RectTransform rStickDot;
     [SerializeField] RectTransform rStickProcessedDot;
+
+    [Header("スティック値表示")]
+    [SerializeField] TextMeshProUGUI lStickXYText;
+    [SerializeField] TextMeshProUGUI rStickXYText;
 
     [Header("色と入力判定")]
     [SerializeField] Color pressedColor = Color.green;
@@ -84,6 +89,18 @@ public class InputVisalizer : MonoBehaviour
         UpdateStickDot(lStickCircle, lStickProcessedDot, controllerInputProvider.LStickInput);
         UpdateStickDot(rStickCircle, rStickDot, controllerInputProvider.RStickInputUnprocessed);
         UpdateStickDot(rStickCircle, rStickProcessedDot, controllerInputProvider.RStickInput);
+
+        UpdateStickText(lStickXYText, controllerInputProvider.LStickInput);
+        UpdateStickText(rStickXYText, controllerInputProvider.RStickInput);
+    }
+
+    void UpdateStickText(TextMeshProUGUI text, Vector2 stickInput)
+    {
+        if (text != null)
+        {
+            text.text = $"X: {stickInput.x:F2}, Y: {stickInput.y:F2}, " +
+                        $"AbsX: {Mathf.Abs(stickInput.x):F2}, AbsY: {Mathf.Abs(stickInput.y):F2}";
+        }
     }
 
     void UpdateStickDot(RectTransform circle, RectTransform dot, Vector2 stickInput)
