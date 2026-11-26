@@ -4,6 +4,21 @@ using System.Collections.Generic;
 
 public class ControllerInputProvider : MonoBehaviour
 {
+    [Serializable]
+    private class ButtonMap
+    {
+        public int a = 0;
+        public int b = 1;
+        public int x = 2;
+        public int y = 3;
+        public int leftBumper = 4;
+        public int rightBumper = 5;
+        public int view = 6;
+        public int menu = 7;
+        public int leftStick = 8;
+        public int rightStick = 9;
+    }
+
     public static ControllerInputProvider instance;
     public static ControllerInputProvider Instance { get { return instance; } }
     public static event Action<Vector2> LStickEvent;
@@ -92,7 +107,35 @@ public class ControllerInputProvider : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI debugText2;
     [SerializeField] TMPro.TextMeshProUGUI debugText3;
 
+    [Header("Joystick button numbers (Unity JoystickButtonN)")]
+    [SerializeField] ButtonMap windowsButtonMap = new ButtonMap();
+    [SerializeField] ButtonMap androidButtonMap = new ButtonMap
+    {
+        view = 10,
+        menu = 11
+    };
+
     float inputLogTimer;
+
+    ButtonMap CurrentButtonMap
+    {
+        get
+        {
+            return Application.platform == RuntimePlatform.Android
+                ? androidButtonMap
+                : windowsButtonMap;
+        }
+    }
+
+    string AxisName(string windowsName, string androidName)
+    {
+        return Application.platform == RuntimePlatform.Android ? androidName : windowsName;
+    }
+
+    static KeyCode JoystickButton(int buttonNumber)
+    {
+        return (KeyCode)((int)KeyCode.JoystickButton0 + buttonNumber);
+    }
 
     void Awake()
     {
@@ -126,8 +169,12 @@ public class ControllerInputProvider : MonoBehaviour
     }
     void StickInput()
     {
-        m_LStickInputUnprocessed = new Vector2(Input.GetAxis("LStickX"), Input.GetAxis("LStickY"));
-        m_RStickInputUnprocessed = new Vector2(Input.GetAxis("RStickX"), Input.GetAxis("RStickY"));
+        m_LStickInputUnprocessed = new Vector2(
+            Input.GetAxis(AxisName("LStickX", "AndroidLStickX")),
+            Input.GetAxis(AxisName("LStickY", "AndroidLStickY")));
+        m_RStickInputUnprocessed = new Vector2(
+            Input.GetAxis(AxisName("RStickX", "AndroidRStickX")),
+            Input.GetAxis(AxisName("RStickY", "AndroidRStickY")));
         m_LStickInput = ProcessStick(m_LStickInputUnprocessed, 
                                     m_LStickDeadzone, m_LStickDeadzoneSquared, LstickDeadZoneConst);
         m_RStickInput = ProcessStick(m_RStickInputUnprocessed, 
@@ -165,8 +212,8 @@ public class ControllerInputProvider : MonoBehaviour
     }
     void TriggerInput()
     {
-        m_LTriggerInputUnprocessed = Input.GetAxis("LTrigger");
-        m_RTriggerInputUnprocessed = Input.GetAxis("RTrigger");
+        m_LTriggerInputUnprocessed = Input.GetAxis(AxisName("LTrigger", "AndroidLTrigger"));
+        m_RTriggerInputUnprocessed = Input.GetAxis(AxisName("RTrigger", "AndroidRTrigger"));
 
         if (m_LTriggerInputUnprocessed < m_TriggerDeadzone){
             m_LTriggerInput = 0f;
@@ -188,8 +235,8 @@ public class ControllerInputProvider : MonoBehaviour
     float previousDpadY = 0f;
     void DpadInput()
     {
-        float currentDpadX = Input.GetAxisRaw("DPadX");
-        float currentDpadY = Input.GetAxisRaw("DPadY");
+        float currentDpadX = Input.GetAxisRaw(AxisName("DPadX", "AndroidDPadX"));
+        float currentDpadY = Input.GetAxisRaw(AxisName("DPadY", "AndroidDPadY"));
 
         m_DpadInput.x = currentDpadX;
         m_DpadInput.y = currentDpadY;
@@ -224,87 +271,30 @@ public class ControllerInputProvider : MonoBehaviour
 
     void ButtonInput()
     {
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
-        {
-            A_DownEvent?.Invoke();
-            m_A_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton0))
-        {
-            m_A_Pressed = false;
+        ButtonMap map = CurrentButtonMap;
+        ReadButton(map.a, A_DownEvent, ref m_A_Pressed);
+        ReadButton(map.b, B_DownEvent, ref m_B_Pressed);
+        ReadButton(map.x, X_DownEvent, ref m_X_Pressed);
+        ReadButton(map.y, Y_DownEvent, ref m_Y_Pressed);
+        ReadButton(map.leftBumper, LBumper_DownEvent, ref m_LBumper_Pressed);
+        ReadButton(map.rightBumper, RBumper_DownEvent, ref m_RBumper_Pressed);
+        ReadButton(map.view, View_DownEvent, ref m_View_Pressed);
+        ReadButton(map.menu, Menu_DownEvent, ref m_Menu_Pressed);
+        ReadButton(map.leftStick, LStick_DownEvent, ref m_LStickPressed);
+        ReadButton(map.rightStick, RStick_DownEvent, ref m_RStickPressed);
+    }
 
+    static void ReadButton(int buttonNumber, Action downEvent, ref bool pressed)
+    {
+        KeyCode key = JoystickButton(buttonNumber);
+        if (Input.GetKeyDown(key))
+        {
+            downEvent?.Invoke();
+            pressed = true;
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        else if (!Input.GetKey(key))
         {
-            B_DownEvent?.Invoke();
-            m_B_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton1))
-        {
-            m_B_Pressed = false;
-
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton2))
-        {
-            X_DownEvent?.Invoke();
-            m_X_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton2))
-        {
-            m_X_Pressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton3))
-        {
-            Y_DownEvent?.Invoke();
-            m_Y_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton3))
-        {
-            m_Y_Pressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton4))
-        {
-            LBumper_DownEvent?.Invoke();
-            m_LBumper_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton4))
-        {
-            m_LBumper_Pressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton5))
-        {
-            RBumper_DownEvent?.Invoke();
-            m_RBumper_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton5))
-        {
-            m_RBumper_Pressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton6))
-        {
-            View_DownEvent?.Invoke();
-            m_View_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton6))
-        {
-            m_View_Pressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton7))
-        {
-            Menu_DownEvent?.Invoke();
-            m_Menu_Pressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton7))
-        {
-            m_Menu_Pressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton9))
-        {
-            LStick_DownEvent?.Invoke();
-            m_LStickPressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton9))
-        {
-            m_LStickPressed = false;
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton10))
-        {
-            RStick_DownEvent?.Invoke();
-            m_RStickPressed = true;
-        } else if (!Input.GetKey(KeyCode.JoystickButton10))
-        {
-            m_RStickPressed = false;
+            pressed = false;
         }
     }
 
@@ -331,11 +321,12 @@ public class ControllerInputProvider : MonoBehaviour
 
     void DebugInput()
     {
-        if (!Input.GetKey(KeyCode.JoystickButton9))
+        ButtonMap map = CurrentButtonMap;
+        if (!Input.GetKey(JoystickButton(map.leftStick)))
         {
             m_LStickPressed = false;
         }
-        if (!Input.GetKey(KeyCode.JoystickButton10))
+        if (!Input.GetKey(JoystickButton(map.rightStick)))
         {
             m_RStickPressed = false;
         }
