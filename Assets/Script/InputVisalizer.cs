@@ -72,8 +72,8 @@ public class InputVisalizer : MonoBehaviour
         SetPressed(yButtonImage, controllerInputProvider.Y_Pressed);
         SetPressed(lBumperImage, controllerInputProvider.LBumper_Pressed);
         SetPressed(rBumperImage, controllerInputProvider.RBumper_Pressed);
-        SetPressed(viewButtonImage, controllerInputProvider.View_Pressed);
-        SetPressed(menuButtonImage, controllerInputProvider.Menu_Pressed);
+        SetPressed(viewButtonImage, controllerInputProvider.G_Pressed);
+        SetPressed(menuButtonImage, controllerInputProvider.S_Pressed);
         SetPressed(lStickButtonImage, controllerInputProvider.LStickPressed);
         SetPressed(rStickButtonImage, controllerInputProvider.RStickPressed);
         SetPressed(lTriggerImage, controllerInputProvider.LTriggerInput > triggerPressedThreshold);

@@ -88,10 +88,10 @@ public class ControllerInputProvider : MonoBehaviour
     public bool LBumper_Pressed { get { return m_LBumper_Pressed; } }
     bool m_RBumper_Pressed = false;
     public bool RBumper_Pressed { get { return m_RBumper_Pressed; } }
-    bool m_View_Pressed = false;
-    public bool View_Pressed { get { return m_View_Pressed; } }
-    bool m_Menu_Pressed = false;
-    public bool Menu_Pressed { get { return m_Menu_Pressed; } }
+    bool m_G_Pressed = false;
+    public bool G_Pressed { get { return m_G_Pressed; } }
+    bool m_S_Pressed = false;
+    public bool S_Pressed { get { return m_S_Pressed; } }
 
 
 
@@ -102,8 +102,7 @@ public class ControllerInputProvider : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI debugText2;
     [SerializeField] TMPro.TextMeshProUGUI debugText3;
 
-    [Header("Joystick button numbers (Unity JoystickButtonN)")]
-    [SerializeField] ButtonMap windowsButtonMap = new ButtonMap();
+    [Header("Android joystick button numbers (Unity JoystickButtonN)")]
     [SerializeField] ButtonMap androidButtonMap = new ButtonMap
     {
         view = 10,
@@ -111,21 +110,6 @@ public class ControllerInputProvider : MonoBehaviour
     };
 
     float inputLogTimer;
-
-    ButtonMap CurrentButtonMap
-    {
-        get
-        {
-            return Application.platform == RuntimePlatform.Android
-                ? androidButtonMap
-                : windowsButtonMap;
-        }
-    }
-
-    string AxisName(string windowsName, string androidName)
-    {
-        return Application.platform == RuntimePlatform.Android ? androidName : windowsName;
-    }
 
     static KeyCode JoystickButton(int buttonNumber)
     {
@@ -150,7 +134,9 @@ public class ControllerInputProvider : MonoBehaviour
         StickInput();
         DpadInput();
         ButtonInput();
+#if UNITY_EDITOR
         DebugInput();
+#endif
 // 値出力
         inputLogTimer += Time.deltaTime;
         if (inputLogTimer >= 1f)
@@ -164,11 +150,15 @@ public class ControllerInputProvider : MonoBehaviour
     void StickInput()
     {
         m_LStickInputUnprocessed = new Vector2(
-            Input.GetAxis(AxisName("LStickX", "AndroidLStickX")),
-            Input.GetAxis(AxisName("LStickY", "AndroidLStickY")));
+            Input.GetAxis("AndroidLStickX"),
+            Input.GetAxis("AndroidLStickY"));
         m_RStickInputUnprocessed = new Vector2(
-            Input.GetAxis(AxisName("RStickX", "AndroidRStickX")),
-            Input.GetAxis(AxisName("RStickY", "AndroidRStickY")));
+            Input.GetAxis("AndroidRStickX"),
+            Input.GetAxis("AndroidRStickY"));
+        m_LTriggerInputUnprocessed = Input.GetAxis("AndroidLTrigger");
+        m_RTriggerInputUnprocessed = Input.GetAxis("AndroidRTrigger");
+        m_LTriggerInput = m_LTriggerInputUnprocessed;
+        m_RTriggerInput = m_RTriggerInputUnprocessed;
         m_LStickInput = ProcessStick(m_LStickInputUnprocessed, 
                                     m_LStickDeadzone, m_LStickDeadzoneSquared, LstickDeadZoneConst);
         m_RStickInput = ProcessStick(m_RStickInputUnprocessed, 
@@ -208,8 +198,8 @@ public class ControllerInputProvider : MonoBehaviour
     float previousDpadY = 0f;
     void DpadInput()
     {
-        float currentDpadX = Input.GetAxisRaw(AxisName("DPadX", "AndroidDPadX"));
-        float currentDpadY = Input.GetAxisRaw(AxisName("DPadY", "AndroidDPadY"));
+        float currentDpadX = Input.GetAxisRaw("AndroidDPadX");
+        float currentDpadY = Input.GetAxisRaw("AndroidDPadY");
 
         m_DpadInput.x = currentDpadX;
         m_DpadInput.y = currentDpadY;
@@ -226,17 +216,17 @@ public class ControllerInputProvider : MonoBehaviour
             }
         }
 
-        // if (previousDpadY != currentDpadY)
-        // {
-        //     if (currentDpadY > 0.5f)
-        //     {
-        //         DpadU_DownEvent?.Invoke(); // Repeater登録済み
-        //     }
-        //     else if (currentDpadY < -0.5f)
-        //     {
-        //         DpadD_DownEvent?.Invoke(); // Repeater登録済み
-        //     }
-        // }
+        if (previousDpadY != currentDpadY)
+        {
+            if (currentDpadY > 0.5f)
+            {
+                DpadU_DownEvent?.Invoke();
+            }
+            else if (currentDpadY < -0.5f)
+            {
+                DpadD_DownEvent?.Invoke();
+            }
+        }
 
         previousDpadX = currentDpadX;
         previousDpadY = currentDpadY;
@@ -244,15 +234,15 @@ public class ControllerInputProvider : MonoBehaviour
 
     void ButtonInput()
     {
-        ButtonMap map = CurrentButtonMap;
-        ReadButton(map.a, A_DownEvent, ref m_A_Pressed);
-        ReadButton(map.b, B_DownEvent, ref m_B_Pressed);
-        ReadButton(map.x, X_DownEvent, ref m_X_Pressed);
-        ReadButton(map.y, Y_DownEvent, ref m_Y_Pressed);
+        ButtonMap map = androidButtonMap;
+        ReadButton(map.a, A_DownEvent, ref m_B_Pressed);
+        ReadButton(map.b, B_DownEvent, ref m_A_Pressed);
+        ReadButton(map.x, X_DownEvent, ref m_Y_Pressed);
+        ReadButton(map.y, Y_DownEvent, ref m_X_Pressed);
         ReadButton(map.leftBumper, LBumper_DownEvent, ref m_LBumper_Pressed);
         ReadButton(map.rightBumper, RBumper_DownEvent, ref m_RBumper_Pressed);
-        ReadButton(map.view, View_DownEvent, ref m_View_Pressed);
-        ReadButton(map.menu, Menu_DownEvent, ref m_Menu_Pressed);
+        ReadButton(map.view, View_DownEvent, ref m_S_Pressed);
+        ReadButton(map.menu, Menu_DownEvent, ref m_G_Pressed);
         ReadButton(map.leftStick, LStick_DownEvent, ref m_LStickPressed);
         ReadButton(map.rightStick, RStick_DownEvent, ref m_RStickPressed);
     }
@@ -285,9 +275,10 @@ public class ControllerInputProvider : MonoBehaviour
         m_RStickDeadzoneSquared = deadzone * deadzone;
         RstickDeadZoneConst = 1f / (1f - deadzone);
     }
+#if UNITY_EDITOR
     void DebugInput()
     {
-        ButtonMap map = CurrentButtonMap;
+        ButtonMap map = androidButtonMap;
         if (!Input.GetKey(JoystickButton(map.leftStick)))
         {
             m_LStickPressed = false;
@@ -475,17 +466,18 @@ public class ControllerInputProvider : MonoBehaviour
             View_DownEvent?.Invoke();
         } else if (Input.GetKey(KeyCode.Tab))
         {
-            m_View_Pressed = true;
+            m_G_Pressed = true;
         }
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Menu_DownEvent?.Invoke();
         } else if (Input.GetKey(KeyCode.Return))
         {
-            m_Menu_Pressed = true;
+            m_S_Pressed = true;
         }
 
     }
+#endif
 
 }
 

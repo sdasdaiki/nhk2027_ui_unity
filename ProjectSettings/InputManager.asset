@@ -647,12 +647,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidLStickX
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -663,12 +663,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidLStickY
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -679,12 +679,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidRStickX
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -695,12 +695,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidRStickY
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -711,12 +711,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidLTrigger
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -727,12 +727,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidRTrigger
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -743,12 +743,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidDPadX
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
@@ -759,12 +759,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: AndroidDPadY
-    descriptiveName:
-    descriptiveNegativeName:
-    negativeButton:
-    positiveButton:
-    altNegativeButton:
-    altPositiveButton:
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
     dead: 0.2
     sensitivity: 1
