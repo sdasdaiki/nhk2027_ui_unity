@@ -23,9 +23,6 @@ public class ControllerInputProvider : MonoBehaviour
     public static ControllerInputProvider Instance { get { return instance; } }
     public static event Action<Vector2> LStickEvent;
     public static event Action<Vector2> RStickEvent;
-    public static event Action<float> LTriggerEvent;
-    public static event Action<float> RTriggerEvent;
-
     public static event Action RStickU_DownEvent;
     public static event Action RStickD_DownEvent;
     public static event Action RStickL_DownEvent;
@@ -153,7 +150,6 @@ public class ControllerInputProvider : MonoBehaviour
     void Update()
     {
         StickInput();
-        TriggerInput();
         DpadInput();
         ButtonInput();
         DebugInput();
@@ -210,27 +206,6 @@ public class ControllerInputProvider : MonoBehaviour
         float multiplier = (1f - (deadzone / Mathf.Sqrt(sqrMag))) * deadzoneConst;
         return rawInput * multiplier;
     }
-    void TriggerInput()
-    {
-        m_LTriggerInputUnprocessed = Input.GetAxis(AxisName("LTrigger", "AndroidLTrigger"));
-        m_RTriggerInputUnprocessed = Input.GetAxis(AxisName("RTrigger", "AndroidRTrigger"));
-
-        if (m_LTriggerInputUnprocessed < m_TriggerDeadzone){
-            m_LTriggerInput = 0f;
-        } else {
-            m_LTriggerInput = (m_LTriggerInputUnprocessed - m_TriggerDeadzone) * TriggerDeadZoneConst; // デッドゾーン外の入力を0-1に再マッピング
-        }
-        if (m_RTriggerInputUnprocessed < m_TriggerDeadzone)
-        {
-            m_RTriggerInput = 0f;
-        } else {
-            m_RTriggerInput = (m_RTriggerInputUnprocessed - m_TriggerDeadzone) * TriggerDeadZoneConst; // デッドゾーン外の入力を0-1に再マッピング
-        }
-
-        LTriggerEvent?.Invoke(m_LTriggerInput);
-        RTriggerEvent?.Invoke(m_RTriggerInput);
-    }
-
     float previousDpadX = 0f;
     float previousDpadY = 0f;
     void DpadInput()
