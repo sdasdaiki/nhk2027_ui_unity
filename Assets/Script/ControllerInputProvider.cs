@@ -47,8 +47,6 @@ public class ControllerInputProvider : MonoBehaviour
     float m_LStickDeadzoneSquared = 0f;
     float m_RStickDeadzone = 0f;
     float m_RStickDeadzoneSquared = 0f;
-    float m_TriggerDeadzone = 0f;
-
     Vector2 m_LStickInput = Vector2.zero;
     public Vector2 LStickInput { get { return m_LStickInput; } }
     Vector2 m_RStickInput = Vector2.zero;
@@ -287,13 +285,6 @@ public class ControllerInputProvider : MonoBehaviour
         m_RStickDeadzoneSquared = deadzone * deadzone;
         RstickDeadZoneConst = 1f / (1f - deadzone);
     }
-    float TriggerDeadZoneConst = 1f;
-    public void SetTriggerDeadzone(float deadzone)
-    {
-        m_TriggerDeadzone = deadzone;
-        TriggerDeadZoneConst = 1f / (1f - deadzone);
-    }
-
     void DebugInput()
     {
         ButtonMap map = CurrentButtonMap;
